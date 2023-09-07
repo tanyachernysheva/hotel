@@ -10,10 +10,10 @@ class HotelBloc extends Bloc<HotelEvent, HotelState> {
   final HotelRepo _repo;
 
   HotelBloc(this._repo) : super(HotelLoadingState()) {
-    on<HotelFetchEvent>(_fetch);
+    on<_HotelFetchEvent>(_fetch);
   }
 
-  Future<void> _fetch(HotelFetchEvent event, Emitter<HotelState> emit) async {
+  Future<void> _fetch(_HotelFetchEvent event, Emitter<HotelState> emit) async {
     try {
       emit(HotelLoadingState());
 

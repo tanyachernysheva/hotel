@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class WhiteIsland extends StatelessWidget {
+  final double? padding;
   final Widget? child;
 
   const WhiteIsland({
     super.key,
     this.child,
+    this.padding,
   });
 
   @override
@@ -18,7 +20,7 @@ class WhiteIsland extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(padding ?? 0),
         child: child,
       ),
     );

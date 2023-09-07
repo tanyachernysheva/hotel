@@ -4,7 +4,7 @@ part of 'hotel_bloc.dart';
 sealed class HotelEvent {
   const HotelEvent();
 
-  factory HotelEvent.fetch() = HotelFetchEvent;
+  factory HotelEvent.fetch() = _HotelFetchEvent;
 }
 
-final class HotelFetchEvent implements HotelEvent {}
+final class _HotelFetchEvent implements HotelEvent {}
