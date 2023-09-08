@@ -16,19 +16,22 @@ abstract final class AppRouter {
         },
         routes: <RouteBase>[
           GoRoute(
-            path: 'room',
+            name: RoomScreen.name,
+            path: RoomScreen.path,
             builder: (BuildContext context, GoRouterState state) {
-              return const RoomScreen();
+              return RoomScreen(
+                hotelName: state.extra as String?,
+              );
             },
           ),
           GoRoute(
-            path: 'booking',
+            path: BookingScreen.path,
             builder: (BuildContext context, GoRouterState state) {
               return const BookingScreen();
             },
           ),
           GoRoute(
-            path: 'paid',
+            path: PaidScreen.path,
             builder: (BuildContext context, GoRouterState state) {
               return PaidScreen();
             },

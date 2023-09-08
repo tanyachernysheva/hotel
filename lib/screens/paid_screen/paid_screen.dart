@@ -6,7 +6,9 @@ import 'package:hotel/screens/hotel_screen/hotel_screen.dart';
 import 'package:hotel/widgets/bottom_navigation_button.dart';
 
 class PaidScreen extends StatelessWidget {
-  final int number = Random().nextInt(100);
+  final int number = Random().nextInt(10000);
+
+  static const path = 'paid';
   PaidScreen({super.key});
 
   @override
@@ -19,7 +21,7 @@ class PaidScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
+          children: <Widget>[
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -45,10 +47,10 @@ class PaidScreen extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    const Text(
-                      'Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.',
+                    Text(
+                      'Подтверждение заказа №$number может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color.fromRGBO(130, 135, 150, 1),
                       ),
                     ),

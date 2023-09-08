@@ -31,11 +31,27 @@ class _CarouselSliderState extends State<CarouselSlider> {
 
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
+                child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  image: DecorationImage(
+                  child: Image.network(
+                    image,
                     fit: BoxFit.fill,
-                    image: NetworkImage(image),
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+
+                      return const Center(
+                        child: CircularProgressIndicator.adaptive(),
+                      );
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return Center(
+                        child: Icon(
+                          Icons.image,
+                          size: 40,
+                          color: Colors.grey[400],
+                        ),
+                      );
+                    },
                   ),
                 ),
               );

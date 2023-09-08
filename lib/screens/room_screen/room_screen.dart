@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hotel/models/hotel.dart';
 import 'package:hotel/repo/room_repo.dart';
 import 'package:hotel/screens/room_screen/bloc/room_bloc.dart';
 import 'package:hotel/screens/room_screen/widgets/room_card.dart';
 
 class RoomScreen extends StatefulWidget {
-  final Hotel? hotel;
-  const RoomScreen({super.key, this.hotel});
+  final String? hotelName;
+
+  static const name = 'room';
+  static const path = 'room';
+
+  const RoomScreen({
+    super.key,
+    this.hotelName,
+  });
 
   @override
   State<RoomScreen> createState() => _RoomScreenState();
@@ -19,8 +25,8 @@ class _RoomScreenState extends State<RoomScreen> {
   @override
   void initState() {
     _bloc = RoomBloc(ApiRoomRepo());
-
     _bloc.add(const RoomEvent.fetch());
+
     super.initState();
   }
 
@@ -28,7 +34,7 @@ class _RoomScreenState extends State<RoomScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.hotel?.name ?? 'Отель'),
+        title: Text(widget.hotelName ?? 'Отель'),
         elevation: 0,
       ),
       body: SafeArea(
@@ -55,7 +61,7 @@ class _RoomScreenState extends State<RoomScreen> {
                   child: Text(state.message ?? ''),
                 ),
               RoomLoadingState() => const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator.adaptive(),
                 ),
             };
           },

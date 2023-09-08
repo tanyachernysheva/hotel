@@ -103,7 +103,7 @@ class RoomCard extends StatelessWidget {
                     ),
                     CustomButton(
                       text: 'Выбрать номер',
-                      onPressed: () => context.go('/booking'),
+                      onPressed: () => context.push('/booking'),
                     ),
                   ],
                 ),
