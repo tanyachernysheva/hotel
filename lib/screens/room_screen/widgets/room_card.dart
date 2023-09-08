@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel/models/room.dart';
-import 'package:hotel/screens/booking_screen/booking_screen.dart';
 import 'package:hotel/widgets/carousel_slider.dart';
 import 'package:hotel/widgets/custom_button.dart';
 import 'package:hotel/widgets/peculiarity.dart';
@@ -103,12 +103,7 @@ class RoomCard extends StatelessWidget {
                     ),
                     CustomButton(
                       text: 'Выбрать номер',
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const BookingScreen()));
-                      },
+                      onPressed: () => context.go('/booking'),
                     ),
                   ],
                 ),

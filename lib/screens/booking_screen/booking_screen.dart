@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel/repo/booking_repo.dart';
 import 'package:hotel/screens/booking_screen/bloc/booking_bloc.dart';
 import 'package:hotel/widgets/bottom_navigation_button.dart';
@@ -168,7 +169,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   BottomNavigationButton(
                     label:
                         'Оплатить ${(state.booking?.serviceCharge ?? 0) + (state.booking?.fuelCharge ?? 0) + (state.booking?.tourPrice ?? 0)} ₽',
-                    onPressed: () {},
+                    onPressed: () => context.go('/paid'),
                   ),
                 ],
               ),

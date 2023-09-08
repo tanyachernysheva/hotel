@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hotel/repo/hotel_repo.dart';
 import 'package:hotel/screens/hotel_screen/bloc/hotel_bloc.dart';
 import 'package:hotel/screens/hotel_screen/widgets/detail_hotel_data_buttons.dart';
 import 'package:hotel/screens/hotel_screen/widgets/main_hotel_data.dart';
-import 'package:hotel/screens/room_screen/room_screen.dart';
 import 'package:hotel/widgets/bottom_navigation_button.dart';
 import 'package:hotel/widgets/peculiarity.dart';
 import 'package:hotel/widgets/white_island.dart';
 
 class HotelScreen extends StatefulWidget {
   const HotelScreen({super.key});
+
+  static const name = 'hotel';
+  static const path = '/';
 
   @override
   State<HotelScreen> createState() => _HotelScreenState();
@@ -90,16 +93,8 @@ class _HotelScreenState extends State<HotelScreen> {
                       ),
                     ),
                     BottomNavigationButton(
-                      label: 'К выбору номера',
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RoomScreen(
-                                      hotel: state.hotel,
-                                    )));
-                      },
-                    ),
+                        label: 'К выбору номера',
+                        onPressed: () => context.go('/room')),
                   ],
                 ),
               HotelErrorState() => Center(
